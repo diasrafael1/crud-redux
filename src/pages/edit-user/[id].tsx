@@ -4,12 +4,25 @@ import { useRouter } from "next/router";
 import { ChangeEvent, FormEvent, useState } from "react";
 import Button from "../../components/Button";
 import TextField from "../../components/TextField";
+import { useAppSelector } from "../../redux/hooks";
 
 const EditUser: NextPage = () => {
   const router = useRouter();
+  const { id } = router.query;
+  const users = useAppSelector((store) => store.users);
+  const existingUser = users.find((user) => user.id === id);
+
+  if (!existingUser) {
+    return (
+      <div>
+        <p className="font-bold text-xl">Usuário não encontrado!</p>
+      </div>
+    );
+  }
+
   const [values, setValues] = useState({
-    name: "",
-    email: "",
+    name: existingUser.name,
+    email: existingUser.email,
   });
 
   function changeValues(e: ChangeEvent<HTMLInputElement>) {
