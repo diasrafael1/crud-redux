@@ -4,9 +4,11 @@ import { useRouter } from "next/router";
 import { ChangeEvent, FormEvent, useState } from "react";
 import Button from "../../components/Button";
 import TextField from "../../components/TextField";
-import { useAppSelector } from "../../redux/hooks";
+import { useAppDispatch, useAppSelector } from "../../redux/hooks";
+import { editUser } from "../../redux/slices/userSlice";
 
 const EditUser: NextPage = () => {
+  const dispatch = useAppDispatch();
   const router = useRouter();
   const { id } = router.query;
   const users = useAppSelector((store) => store.users);
@@ -31,7 +33,7 @@ const EditUser: NextPage = () => {
 
   function handleEditUser(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    console.log(values);
+    dispatch(editUser({ id: String(id), ...values }));
     router.push("/");
   }
 
