@@ -46,7 +46,7 @@ const AddUser: NextPage = () => {
           value={values.email}
           onChange={changeValues}
         />
-        <Button onClick={() => {}}>Submit</Button>
+        <Button>Submit</Button>
       </form>
     </>
   );

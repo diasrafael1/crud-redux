@@ -16,7 +16,7 @@ const EditUser: NextPage = () => {
     setValues({ ...values, [e.target.name]: e.target.value });
   }
 
-  function handleAddUser(e: FormEvent<HTMLFormElement>) {
+  function handleEditUser(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     console.log(values);
     router.push("/");
@@ -30,7 +30,7 @@ const EditUser: NextPage = () => {
 
       <form
         className="mt-10 max-w-xl mx-auto"
-        onSubmit={(e) => handleAddUser(e)}
+        onSubmit={(e) => handleEditUser(e)}
       >
         <TextField
           label="Nome"
@@ -47,7 +47,7 @@ const EditUser: NextPage = () => {
           value={values.email}
           onChange={changeValues}
         />
-        <Button onClick={() => {}}>Submit</Button>
+        <Button>Edit</Button>
       </form>
     </>
   );
