@@ -1,4 +1,14 @@
-const Card = ({ name, email }: { name: string; email: string }) => {
+import { useRouter } from "next/router";
+
+interface Props {
+  id: number;
+  name: string;
+  email: string;
+}
+
+const Card = ({ id, name, email }: Props) => {
+  const router = useRouter();
+
   return (
     <div className="bg-gray-300 p-5 flex  items-center justify-between">
       <div>
@@ -6,7 +16,7 @@ const Card = ({ name, email }: { name: string; email: string }) => {
         <span className="font-normal text-gray-600">{email}</span>
       </div>
       <div className="flex gap-4">
-        <button>
+        <button onClick={() => router.push(`/edit-user/${id}`)}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
