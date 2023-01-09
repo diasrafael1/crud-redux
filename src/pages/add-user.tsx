@@ -1,10 +1,12 @@
 import type { NextPage } from "next";
 import Head from "next/head";
+import { useRouter } from "next/router";
 import { ChangeEvent, FormEvent, useState } from "react";
 import Button from "../components/Button";
 import TextField from "../components/TextField";
 
 const AddUser: NextPage = () => {
+  const router = useRouter();
   const [values, setValues] = useState({
     name: "",
     email: "",
@@ -17,6 +19,7 @@ const AddUser: NextPage = () => {
   function handleAddUser(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     console.log(values);
+    router.push("/");
   }
 
   return (
