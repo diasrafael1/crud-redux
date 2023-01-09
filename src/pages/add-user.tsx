@@ -6,6 +6,7 @@ import Button from "../components/Button";
 import TextField from "../components/TextField";
 import { useAppDispatch } from "../redux/hooks";
 import { addUser } from "../redux/slices/userSlice";
+import { v4 as uuidv4 } from "uuid";
 
 const AddUser: NextPage = () => {
   const router = useRouter();
@@ -21,7 +22,7 @@ const AddUser: NextPage = () => {
 
   function handleAddUser(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    dispatch(addUser(values));
+    dispatch(addUser({ id: uuidv4(), ...values }));
     router.push("/");
   }
 
