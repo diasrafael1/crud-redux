@@ -1,7 +1,7 @@
 import { useRouter } from "next/router";
 
 interface Props {
-  id: number;
+  id?: number;
   name: string;
   email: string;
 }
