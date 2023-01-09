@@ -1,4 +1,6 @@
 import { useRouter } from "next/router";
+import { useAppDispatch } from "../../redux/hooks";
+import { deleteUser } from "../../redux/slices/userSlice";
 
 interface Props {
   id: string;
@@ -7,6 +9,7 @@ interface Props {
 }
 
 const Card = ({ id, name, email }: Props) => {
+  const dispatch = useAppDispatch();
   const router = useRouter();
 
   return (
@@ -32,7 +35,7 @@ const Card = ({ id, name, email }: Props) => {
             />
           </svg>
         </button>
-        <button>
+        <button onClick={() => dispatch(deleteUser(id))}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
