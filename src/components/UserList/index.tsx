@@ -1,7 +1,9 @@
 import Button from "../Button";
 import Card from "../Card";
+import { useRouter } from "next/router";
 
 const UserList = () => {
+  const router = useRouter();
   const users = [
     { id: 1, name: "Amanda", email: "amanda@mail.com" },
     { id: 2, name: "Carlos", email: "carlos@mail.com" },
@@ -10,7 +12,7 @@ const UserList = () => {
 
   return (
     <div>
-      <Button onClick={() => {}}>Add User</Button>
+      <Button onClick={() => router.push("/add-user")}>Add User</Button>
       <div className="grid gap-5 md:grid-cols-2">
         {users.length ? (
           <>
