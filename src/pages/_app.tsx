@@ -1,5 +1,7 @@
 import "../styles/globals.css";
 import type { AppProps } from "next/app";
+import { Provider } from "react-redux";
+import { store } from "../redux/store";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -7,7 +9,9 @@ function MyApp({ Component, pageProps }: AppProps) {
       <h1 className="text-center font-bold text-2xl text-gray-700">
         CRUD com Redux Toolkit
       </h1>
-      <Component {...pageProps} />
+      <Provider store={store}>
+        <Component {...pageProps} />
+      </Provider>
     </main>
   );
 }
