@@ -1,14 +1,11 @@
 import Button from "../Button";
 import Card from "../Card";
 import { useRouter } from "next/router";
+import { useAppSelector } from "../../redux/hooks";
 
 const UserList = () => {
   const router = useRouter();
-  const users = [
-    { id: 1, name: "Amanda", email: "amanda@mail.com" },
-    { id: 2, name: "Carlos", email: "carlos@mail.com" },
-    { id: 3, name: "Rodrigo", email: "rodrigo@mail.com" },
-  ];
+  const users = useAppSelector((store) => store.users);
 
   return (
     <div>
