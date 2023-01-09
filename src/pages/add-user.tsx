@@ -4,9 +4,12 @@ import { useRouter } from "next/router";
 import { ChangeEvent, FormEvent, useState } from "react";
 import Button from "../components/Button";
 import TextField from "../components/TextField";
+import { useAppDispatch } from "../redux/hooks";
+import { addUser } from "../redux/slices/userSlice";
 
 const AddUser: NextPage = () => {
   const router = useRouter();
+  const dispatch = useAppDispatch();
   const [values, setValues] = useState({
     name: "",
     email: "",
@@ -18,7 +21,7 @@ const AddUser: NextPage = () => {
 
   function handleAddUser(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    console.log(values);
+    dispatch(addUser(values));
     router.push("/");
   }
 

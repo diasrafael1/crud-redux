@@ -2,7 +2,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import type { RootState } from "../store";
 
 interface UserState {
-  id: number;
+  id?: number;
   name: string;
   email: string;
 }
@@ -16,9 +16,16 @@ const initialState: UserState[] = [
 export const userSlice = createSlice({
   name: "users",
   initialState,
-  reducers: {},
+  reducers: {
+    addUser: (
+      state: UserState[],
+      action: { payload: UserState; type: string }
+    ) => {
+      state.push(action.payload);
+    },
+  },
 });
 
-export const {} = userSlice.actions;
+export const { addUser } = userSlice.actions;
 
 export default userSlice.reducer;
